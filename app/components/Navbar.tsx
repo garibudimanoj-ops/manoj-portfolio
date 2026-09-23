@@ -118,12 +118,12 @@ export default function Navbar() {
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
-            <Link
-              href="/projects"
-              className="btn btn-primary text-xs lg:text-sm h-9 px-4 rounded-full font-medium shadow-sm hover:shadow transition-all duration-200"
-            >
-              View Projects
-            </Link>
+<Link
+               href="/projects"
+               className="btn btn-outline bg-background/40 text-xs lg:text-sm h-9 px-4 rounded-full font-medium border-border/60 hover:bg-accent/40 transition-all duration-200"
+             >
+               View Projects
+             </Link>
           </div>
 
           {/* Mobile Actions */}
@@ -190,7 +190,7 @@ export default function Navbar() {
                 <Link
                   href="/projects"
                   onClick={closeMobileMenu}
-                  className="btn btn-primary w-full py-2.5 rounded-lg text-sm font-medium justify-center text-center shadow-sm"
+                  className="btn btn-outline w-full py-2.5 rounded-lg text-sm font-medium justify-center text-center border-border/80 hover:bg-accent/60 transition-all duration-200"
                 >
                   View Projects
                 </Link>

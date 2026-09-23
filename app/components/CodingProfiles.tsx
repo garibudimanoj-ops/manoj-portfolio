@@ -3,20 +3,28 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Code2, ExternalLink } from "lucide-react";
 import { codingProfiles } from "@/app/data/coding-profiles";
+import { CodeChefIcon } from "./icons/CodeChefIcon";
+import { CodeforcesIcon } from "./icons/CodeforcesIcon";
+import { HackerRankIcon } from "./icons/HackerRankIcon";
+import { LeetCodeIcon } from "./icons/LeetCodeIcon";
 
 interface CodingProfileCardProps {
   profile: (typeof codingProfiles)[number];
   index: number;
 }
 
+const profileIcons: Record<string, typeof CodeChefIcon> = {
+  LeetCode: LeetCodeIcon,
+  CodeChef: CodeChefIcon,
+  Codeforces: CodeforcesIcon,
+  HackerRank: HackerRankIcon,
+};
+
 export function CodingProfilesCard({
   profile,
   index,
 }: CodingProfileCardProps) {
-  const initials = profile.name
-    .split(/\s+/)
-    .map((word) => word[0])
-    .join("");
+  const Icon = profileIcons[profile.name] ?? Code2;
 
   return (
     <motion.article
@@ -28,7 +36,7 @@ export function CodingProfilesCard({
     >
       <div className="flex items-center justify-between mb-4">
         <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-          <span className="text-xl font-bold text-primary">{initials}</span>
+          <Icon className="w-7 h-7 text-primary" aria-hidden="true" />
         </div>
         <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
       </div>

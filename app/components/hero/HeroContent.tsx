@@ -96,22 +96,22 @@ export default function HeroContent() {
       {/* Technical Focus Chips */}
       <motion.div
         variants={itemVariants}
-        className="flex flex-wrap items-center gap-2.5 pt-2 border-t border-border/50 w-full"
+        className="flex flex-wrap items-center gap-2.5 pt-6 border-t border-border/50 w-full min-w-0"
       >
         <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground mr-1">
           Specialization:
         </span>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-muted/60 border border-border/50 text-xs font-medium text-foreground">
-          <Layers className="w-3 h-3 text-primary" />
-          <span>Full-Stack & APIs</span>
+        <div className="flex min-w-0 items-center gap-1.5 px-3 py-1 rounded-md bg-muted/60 border border-border/50 text-xs font-medium text-foreground">
+          <Layers className="w-3 h-3 text-primary shrink-0" />
+          <span className="break-words">Full-Stack & APIs</span>
         </div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-muted/60 border border-border/50 text-xs font-medium text-foreground">
-          <Sparkles className="w-3 h-3 text-cyan-400" />
-          <span>AI & Computer Vision</span>
+        <div className="flex min-w-0 items-center gap-1.5 px-3 py-1 rounded-md bg-muted/60 border border-border/50 text-xs font-medium text-foreground">
+          <Sparkles className="w-3 h-3 text-cyan-400 shrink-0" />
+          <span className="break-words">AI & Computer Vision</span>
         </div>
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-muted/60 border border-border/50 text-xs font-medium text-foreground">
-          <Cpu className="w-3 h-3 text-indigo-400" />
-          <span>Automation (n8n)</span>
+        <div className="flex min-w-0 items-center gap-1.5 px-3 py-1 rounded-md bg-muted/60 border border-border/50 text-xs font-medium text-foreground">
+          <Cpu className="w-3 h-3 text-indigo-400 shrink-0" />
+          <span className="break-words">Automation (n8n)</span>
         </div>
       </motion.div>
     </motion.div>

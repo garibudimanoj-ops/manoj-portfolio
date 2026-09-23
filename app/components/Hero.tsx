@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import HeroContent from "./hero/HeroContent";
 import HeroFallback from "./hero/HeroFallback";
 
@@ -12,6 +12,7 @@ const DynamicHeroScene = dynamic(() => import("./hero/HeroScene"), {
 });
 
 export default function Hero() {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <section
       className="relative min-h-[calc(100vh-4rem)] lg:min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-28 pb-16 lg:py-24"
@@ -19,8 +20,8 @@ export default function Hero() {
     >
       {/* Background ambient lighting and subtle tech grid */}
       <div className="absolute inset-0 pointer-events-none -z-10" aria-hidden="true">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px]" />
-        <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] md:w-[480px] md:h-[480px] lg:w-[600px] lg:h-[600px] bg-primary/10 rounded-full blur-[140px]" />
+        <div className="absolute top-1/3 right-10 w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] bg-cyan-500/10 rounded-full blur-[120px]" />
         
         {/* Subtle geometric dot grid pattern */}
         <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
@@ -44,17 +45,21 @@ export default function Hero() {
 
           {/* Right Column: Interactive 3D Technology Visual */}
           <div className="lg:col-span-5 flex items-center justify-center">
-            <div className="w-full max-w-[440px] lg:max-w-[480px]">
+            <motion.div
+              animate={shouldReduceMotion ? undefined : { y: [0, -6, 0] }}
+              transition={shouldReduceMotion ? undefined : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="w-full max-w-[440px] lg:max-w-[480px]"
+            >
               <DynamicHeroScene />
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
 
       {/* Subtle Scroll Down Indicator */}
       <motion.div
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+        animate={shouldReduceMotion ? undefined : { y: [0, 8, 0] }}
+        transition={shouldReduceMotion ? undefined : { duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
         className="hidden sm:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 text-muted-foreground/70 pointer-events-none"
         aria-hidden="true"
       >
